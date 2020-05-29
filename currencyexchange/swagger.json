@@ -1,0 +1,167 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Foreign exchange rates API",
+    "version": "2.0.0",
+    "description": "Foreign exchange rates API with currency conversion."
+  },
+  "tags": [
+    {
+      "name": "Exchange Rate"
+    }
+  ],
+  "paths": {
+    "/latest": {
+      "get": {
+        "tags": [
+          "Exchange Rate"
+        ],
+        "operationId": "getLatest",
+        "responses": {
+          "200": {
+            "description": "The operation was successful.",
+            "schema": {
+              "type": "string",
+              "example": "{\"rates\":{\"MYR\":4.3554829339},\"base\":\"USD\",\"date\":\"2020-05-28\"}"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "description": "Get the latest foreign exchange reference rates",
+        "parameters": [
+          {
+            "name": "base",
+            "in": "query",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "default": "USD",
+            "description": "Quote against a different currency by setting the base parameter in your request (eg. USD)",
+            "format": ""
+          },
+          {
+            "name": "symbols",
+            "in": "query",
+            "type": "string",
+            "default": "MYR",
+            "description": "Request specific exchange rates by setting the symbols parameter (eg. MYR,THB)",
+            "format": ""
+          }
+        ]
+      }
+    },
+    "/history": {
+      "get": {
+        "tags": [
+          "Exchange Rate"
+        ],
+        "operationId": "getHistory",
+        "responses": {
+          "200": {
+            "description": "The operation was successful.",
+            "schema": {
+              "type": "string",
+              "example": "{\"rates\":{\"2020-01-03\":{\"MYR\":4.1020005383},\"2020-01-02\":{\"MYR\":4.0886268203}},\"start_at\":\"2020-01-01\",\"base\":\"USD\",\"end_at\":\"2020-01-03\"}"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "description": "Get historical rates for a time period",
+        "parameters": [
+          {
+            "name": "start_at",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "default": "2019-01-01",
+            "description": "Get historical rates for a time period, in yyyy-mm-dd (eg. 2018-01-12)",
+            "format": ""
+          },
+          {
+            "name": "end_at",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "default": "2019-01-05",
+            "description": "Get historical rates for a time period, in yyyy-mm-dd (eg. 2018-01-12)",
+            "format": ""
+          },
+          {
+            "name": "base",
+            "in": "query",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "default": "USD",
+            "description": "Quote against a different currency by setting the base parameter in your request (eg. USD)",
+            "format": ""
+          },
+          {
+            "name": "symbols",
+            "in": "query",
+            "type": "string",
+            "default": "MYR",
+            "description": "Request specific exchange rates by setting the symbols parameter (eg. MYR,THB)",
+            "format": ""
+          }
+        ]
+      }
+    },
+    "/bydate": {
+      "get": {
+        "tags": [
+          "Exchange Rate"
+        ],
+        "operationId": "getBydate",
+        "responses": {
+          "200": {
+            "description": "The operation was successful.",
+            "schema": {
+              "type": "string",
+              "example": "{\"rates\":{\"MYR\":4.090528752},\"base\":\"USD\",\"date\":\"2019-12-31\"}"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "description": "Get historical rates for any day since 1999.",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "default": "2019-01-01",
+            "description": "Get historical rates for any day since 1999 (eg. 2018-01-12)"
+          },
+          {
+            "name": "base",
+            "in": "query",
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 3,
+            "default": "USD",
+            "description": "Quote against a different currency by setting the base parameter in your request (eg. USD)"
+          },
+          {
+            "name": "symbols",
+            "in": "query",
+            "type": "string",
+            "default": "MYR",
+            "description": "Request specific exchange rates by setting the symbols parameter (eg. MYR,THB)"
+          }
+        ]
+      }
+    }
+  },
+  "basePath": "/currencyexchange/api",
+  "schemes": [
+    "http"
+  ],
+  "host": "desktop-f68muut:7800"
+}

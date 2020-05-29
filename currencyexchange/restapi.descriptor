@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="swagger_20" definitionFile="swagger.json" implementation="gen/currencyexchange.msgflow" https="false">
+    <ns2:operations>
+        <ns2:operation name="getBydate" implementation="getBydate.subflow"/>
+        <ns2:operation name="getHistory" implementation="getHistory.subflow"/>
+        <ns2:operation name="getLatest" implementation="getLatest.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers/>
+</ns2:restapiDescriptor>

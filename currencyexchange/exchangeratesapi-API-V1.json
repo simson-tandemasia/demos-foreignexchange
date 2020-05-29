@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Exchange rates API is a free service for current and historical foreign exchange rates.",
+    "version": "1.0.0",
+    "title": "exchangeratesapi API V1"
+  },
+  "host": "api.exchangeratesapi.io",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/latest": {
+      "get": {
+        "tags": [
+          "latest"
+        ],
+        "summary": "Get the latest foreign exchange reference rates.",
+        "description": "Get the latest foreign exchange reference rates.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "symbols",
+            "in": "query",
+            "description": "Request specific exchange rates by setting the symbols parameter",
+            "required": false,
+            "type": "string",
+			"example" : "MYR,THB"
+          },
+          {
+            "name": "base",
+            "in": "query",
+            "description": "Quote against a different currency by setting the base parameter in your request",
+            "required": false,
+            "type": "string",
+			"example" : "USD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation was successful."
+          }
+        }
+      }
+    },
+    "/history": {
+      "get": {
+        "tags": [
+          "getHistory"
+        ],
+        "summary": "Get historical rates for a time period.",
+        "description": "Get historical rates for a time period.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "start_at",
+            "in": "query",
+            "description": "Get historical rates for a time period, in yyyy-mm-dd eg. 2010-01-12",
+            "required": true,
+            "type": "string",
+			"example" : "2020-01-28"
+          },
+          {
+            "name": "end_at",
+            "in": "query",
+            "description": "Get historical rates for a time period, in yyyy-mm-dd eg. 2010-01-12",
+            "required": true,
+            "type": "string",
+			"example" : "2020-01-28"
+          },
+          {
+            "name": "symbols",
+            "in": "query",
+            "description": "Request specific exchange rates by setting the symbols parameter",
+            "required": false,
+            "type": "string",
+			"example" : "MYR,THB"
+          },
+          {
+            "name": "base",
+            "in": "query",
+            "description": "Quote against a different currency by setting the base parameter in your request",
+            "required": false,
+            "type": "string",
+			"example" : "USD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation was successful."
+          }
+        }
+      }
+    },
+    "/{date}": {
+      "get": {
+        "tags": [
+          "getDate"
+        ],
+        "summary": "Get historical rates for any day since 1999.",
+        "description": "Get historical rates for any day since 1999.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "Get historical rates for any day since 1999 (eg. 2020-01-28)",
+            "required": true,
+            "type": "string",
+			"example" : "2020-01-28"
+          },
+          {
+            "name": "symbols",
+            "in": "query",
+            "description": "Request specific exchange rates by setting the symbols parameter",
+            "required": false,
+            "type": "string",
+			"example" : "MYR,THB"
+          },
+          {
+            "name": "base",
+            "in": "query",
+            "description": "Quote against a different currency by setting the base parameter in your request",
+            "required": false,
+            "type": "string",
+			"example" : "USD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The operation was successful."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}
